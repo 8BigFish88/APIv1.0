@@ -1,0 +1,82 @@
+[Tue Jan 28 11:08:43.308841 2020] [authz_core:error] [pid 11217:tid 140574346704640] [client 127.0.0.1:35962] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:08:43.553334 2020] [authz_core:error] [pid 11217:tid 140574424266496] [client 127.0.0.1:35962] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:12:04.072934 2020] [authz_core:error] [pid 11216:tid 140574338311936] [client 127.0.0.1:36014] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:12:04.188844 2020] [authz_core:error] [pid 11216:tid 140574321526528] [client 127.0.0.1:36014] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:12:05.599842 2020] [authz_core:error] [pid 11217:tid 140574329919232] [client 127.0.0.1:36016] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:12:05.711154 2020] [authz_core:error] [pid 11217:tid 140574321526528] [client 127.0.0.1:36016] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:12:05.949201 2020] [authz_core:error] [pid 11216:tid 140574304741120] [client 127.0.0.1:36018] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:12:19.210920 2020] [authz_core:error] [pid 11409:tid 140609739499264] [client 127.0.0.1:36020] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:12:20.212517 2020] [authz_core:error] [pid 11409:tid 140609731106560] [client 127.0.0.1:36020] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:12:20.714090 2020] [authz_core:error] [pid 11409:tid 140609747891968] [client 127.0.0.1:36020] AH01630: client denied by server configuration: /home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi
+[Tue Jan 28 11:13:22.589065 2020] [wsgi:error] [pid 11524:tid 140437222614784] [remote 127.0.0.1:36022] mod_wsgi (pid=11524): Target WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi' cannot be loaded as Python module.
+[Tue Jan 28 11:13:22.589144 2020] [wsgi:error] [pid 11524:tid 140437222614784] [remote 127.0.0.1:36022] mod_wsgi (pid=11524): Exception occurred processing WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi'.
+[Tue Jan 28 11:13:22.589170 2020] [wsgi:error] [pid 11524:tid 140437222614784] [remote 127.0.0.1:36022] Traceback (most recent call last):
+[Tue Jan 28 11:13:22.589196 2020] [wsgi:error] [pid 11524:tid 140437222614784] [remote 127.0.0.1:36022]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi", line 4, in <module>
+[Tue Jan 28 11:13:22.589257 2020] [wsgi:error] [pid 11524:tid 140437222614784] [remote 127.0.0.1:36022]     from app import app as application
+[Tue Jan 28 11:13:22.589271 2020] [wsgi:error] [pid 11524:tid 140437222614784] [remote 127.0.0.1:36022]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.py", line 1, in <module>
+[Tue Jan 28 11:13:22.589329 2020] [wsgi:error] [pid 11524:tid 140437222614784] [remote 127.0.0.1:36022]     from flask import Flask, jsonify, request, abort
+[Tue Jan 28 11:13:22.589351 2020] [wsgi:error] [pid 11524:tid 140437222614784] [remote 127.0.0.1:36022] ImportError: No module named flask
+[Tue Jan 28 11:21:47.378038 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36080] mod_wsgi (pid=11788): Target WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi' cannot be loaded as Python module.
+[Tue Jan 28 11:21:47.378113 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36080] mod_wsgi (pid=11788): Exception occurred processing WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi'.
+[Tue Jan 28 11:21:47.378148 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36080] Traceback (most recent call last):
+[Tue Jan 28 11:21:47.378175 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36080]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi", line 4, in <module>
+[Tue Jan 28 11:21:47.378240 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36080]     from app import app as application
+[Tue Jan 28 11:21:47.378255 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36080]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.py", line 1, in <module>
+[Tue Jan 28 11:21:47.378326 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36080]     from flask import Flask, jsonify, request, abort
+[Tue Jan 28 11:21:47.378351 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36080] ImportError: No module named flask
+[Tue Jan 28 11:21:49.097839 2020] [wsgi:error] [pid 11788:tid 139931012966144] [remote 127.0.0.1:36082] mod_wsgi (pid=11788): Target WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi' cannot be loaded as Python module.
+[Tue Jan 28 11:21:49.097895 2020] [wsgi:error] [pid 11788:tid 139931012966144] [remote 127.0.0.1:36082] mod_wsgi (pid=11788): Exception occurred processing WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi'.
+[Tue Jan 28 11:21:49.097926 2020] [wsgi:error] [pid 11788:tid 139931012966144] [remote 127.0.0.1:36082] Traceback (most recent call last):
+[Tue Jan 28 11:21:49.097957 2020] [wsgi:error] [pid 11788:tid 139931012966144] [remote 127.0.0.1:36082]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi", line 4, in <module>
+[Tue Jan 28 11:21:49.098030 2020] [wsgi:error] [pid 11788:tid 139931012966144] [remote 127.0.0.1:36082]     from app import app as application
+[Tue Jan 28 11:21:49.098044 2020] [wsgi:error] [pid 11788:tid 139931012966144] [remote 127.0.0.1:36082]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.py", line 1, in <module>
+[Tue Jan 28 11:21:49.098062 2020] [wsgi:error] [pid 11788:tid 139931012966144] [remote 127.0.0.1:36082]     from flask import Flask, jsonify, request, abort
+[Tue Jan 28 11:21:49.098084 2020] [wsgi:error] [pid 11788:tid 139931012966144] [remote 127.0.0.1:36082] ImportError: No module named flask
+[Tue Jan 28 11:21:49.556045 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36086] mod_wsgi (pid=11788): Target WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi' cannot be loaded as Python module.
+[Tue Jan 28 11:21:49.556170 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36086] mod_wsgi (pid=11788): Exception occurred processing WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi'.
+[Tue Jan 28 11:21:49.556243 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36086] Traceback (most recent call last):
+[Tue Jan 28 11:21:49.556318 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36086]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi", line 4, in <module>
+[Tue Jan 28 11:21:49.556419 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36086]     from app import app as application
+[Tue Jan 28 11:21:49.556449 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36086]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.py", line 1, in <module>
+[Tue Jan 28 11:21:49.556483 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36086]     from flask import Flask, jsonify, request, abort
+[Tue Jan 28 11:21:49.556541 2020] [wsgi:error] [pid 11788:tid 139931038144256] [remote 127.0.0.1:36086] ImportError: No module named flask
+[Tue Jan 28 11:31:24.264561 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36234] mod_wsgi (pid=12238): Target WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi' cannot be loaded as Python module.
+[Tue Jan 28 11:31:24.264676 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36234] mod_wsgi (pid=12238): Exception occurred processing WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi'.
+[Tue Jan 28 11:31:24.264711 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36234] Traceback (most recent call last):
+[Tue Jan 28 11:31:24.264746 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36234]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi", line 4, in <module>
+[Tue Jan 28 11:31:24.264824 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36234]     from app import app as application
+[Tue Jan 28 11:31:24.264840 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36234]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.py", line 1, in <module>
+[Tue Jan 28 11:31:24.264916 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36234]     from flask import Flask, jsonify, request, abort
+[Tue Jan 28 11:31:24.264944 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36234] ImportError: No module named flask
+[Tue Jan 28 11:31:25.218973 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36236] mod_wsgi (pid=12238): Target WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi' cannot be loaded as Python module.
+[Tue Jan 28 11:31:25.219197 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36236] mod_wsgi (pid=12238): Exception occurred processing WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi'.
+[Tue Jan 28 11:31:25.219393 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36236] Traceback (most recent call last):
+[Tue Jan 28 11:31:25.219585 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36236]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi", line 4, in <module>
+[Tue Jan 28 11:31:25.219845 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36236]     from app import app as application
+[Tue Jan 28 11:31:25.219937 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36236]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.py", line 1, in <module>
+[Tue Jan 28 11:31:25.220039 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36236]     from flask import Flask, jsonify, request, abort
+[Tue Jan 28 11:31:25.220169 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36236] ImportError: No module named flask
+[Tue Jan 28 11:33:32.832972 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36244] mod_wsgi (pid=12238): Target WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi' cannot be loaded as Python module.
+[Tue Jan 28 11:33:32.833011 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36244] mod_wsgi (pid=12238): Exception occurred processing WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi'.
+[Tue Jan 28 11:33:32.833034 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36244] Traceback (most recent call last):
+[Tue Jan 28 11:33:32.833057 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36244]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi", line 4, in <module>
+[Tue Jan 28 11:33:32.833084 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36244]     from app import app as application
+[Tue Jan 28 11:33:32.833094 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36244]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.py", line 1, in <module>
+[Tue Jan 28 11:33:32.833107 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36244]     from flask import Flask, jsonify, request, abort
+[Tue Jan 28 11:33:32.833135 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36244] ImportError: No module named flask
+[Tue Jan 28 11:33:34.094309 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36246] mod_wsgi (pid=12238): Target WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi' cannot be loaded as Python module.
+[Tue Jan 28 11:33:34.094430 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36246] mod_wsgi (pid=12238): Exception occurred processing WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi'.
+[Tue Jan 28 11:33:34.094560 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36246] Traceback (most recent call last):
+[Tue Jan 28 11:33:34.094628 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36246]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi", line 4, in <module>
+[Tue Jan 28 11:33:34.094732 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36246]     from app import app as application
+[Tue Jan 28 11:33:34.094767 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36246]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.py", line 1, in <module>
+[Tue Jan 28 11:33:34.094807 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36246]     from flask import Flask, jsonify, request, abort
+[Tue Jan 28 11:33:34.094863 2020] [wsgi:error] [pid 12238:tid 139743202506496] [remote 127.0.0.1:36246] ImportError: No module named flask
+[Tue Jan 28 11:33:37.769301 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36248] mod_wsgi (pid=12238): Target WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi' cannot be loaded as Python module.
+[Tue Jan 28 11:33:37.769487 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36248] mod_wsgi (pid=12238): Exception occurred processing WSGI script '/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi'.
+[Tue Jan 28 11:33:37.769688 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36248] Traceback (most recent call last):
+[Tue Jan 28 11:33:37.769860 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36248]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.wsgi", line 4, in <module>
+[Tue Jan 28 11:33:37.770066 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36248]     from app import app as application
+[Tue Jan 28 11:33:37.770140 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36248]   File "/home/ivana/SystemIntegrator/MirkoPeloso/IntegrationApp/API/app.py", line 1, in <module>
+[Tue Jan 28 11:33:37.770221 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36248]     from flask import Flask, jsonify, request, abort
+[Tue Jan 28 11:33:37.770322 2020] [wsgi:error] [pid 12238:tid 139743236077312] [remote 127.0.0.1:36248] ImportError: No module named flask
