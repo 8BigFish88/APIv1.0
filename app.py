@@ -5,6 +5,7 @@ from flask_restplus import Api, Resource, reqparse, fields
 from flask_sqlalchemy import SQLAlchemy
 from marshmallow_sqlalchemy import ModelSchema
 from flask_cors import CORS, cross_origin
+
 #modified
 app = Flask(__name__)
 
@@ -121,7 +122,7 @@ class POST_User(Resource):
         else:
             page = request.args.get('page', 1 , type=int)
             users_count = User.query.count()
-            pages= users_count / app.config['PER_PAGE']
+            pages= users_count // app.config['PER_PAGE'] + (users_count % app.config['PER_PAGE'] > 0)
             users = User.query.paginate(page, app.config['PER_PAGE'], False).items
             response =    { "page": page, "per_page": app.config['PER_PAGE'],
                 "total": users_count, "total_pages": pages, "data": []}
