@@ -10,12 +10,13 @@ app = Flask(__name__)
 
 cors = CORS(app)
 
-api = Api(app, version='1.0', title='Sample Users_Insert API',
+api = Api(app, version='1.0', title='Sample Users Insert API',
     description='API for insert users in a DB')
 
 users = api.namespace('api/v1.0/users',description='CRUD operation for users')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db' 
+app.config['PER_PAGE'] = 6
 
 db = SQLAlchemy(app)
 
@@ -115,8 +116,9 @@ class POST_User(Resource):
                 abort(404)
             return jsonify(user_schema.dump(user))
         else:
-            users = User.query.order_by(User.name).all()
-            return jsonify(users_schema.dump(users))
+            page = request.args.get('page', 1, type=int)
+            users = User.query.paginate(page, app.config['PER_PAGE'], False).items
+        return jsonify(users_schema.dump(users))
     
     
 
