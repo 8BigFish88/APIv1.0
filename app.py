@@ -120,8 +120,13 @@ class POST_User(Resource):
             return jsonify(user_schema.dump(user))
         else:
             page = request.args.get('page', 1 , type=int)
+            users_count = User.query.count()
+            pages= users_count / app.config['PER_PAGE']
             users = User.query.paginate(page, app.config['PER_PAGE'], False).items
-            return jsonify(users_schema.dump(users))
+            response =    { "page": page, "per_page": app.config['PER_PAGE'],
+                "total": users_count, "total_pages": pages, "data": []}
+            response["data"]=users_schema.dump(users)
+            return jsonify(response)
 
 
         
