@@ -47,6 +47,9 @@ db.create_all()
 parserId = reqparse.RequestParser()
 parserId.add_argument('user_id',type=int)
 
+parserPage = reqparse.RequestParser()
+parserPage.add_argument('page',type=int, default=1)
+
 @users.route('/<int:user_id>')
 class GET_User(Resource):
     def get(self,user_id):
@@ -107,7 +110,7 @@ class POST_User(Resource):
         db.session.commit()
         return jsonify(user_schema.dump(new_user))
 
-    @users.expect(parserId)
+    @users.expect(parserId, parserPage)
     def get(self):
         if request.args.get('user_id'):
             user_id=request.args.get('user_id')
@@ -116,9 +119,12 @@ class POST_User(Resource):
                 abort(404)
             return jsonify(user_schema.dump(user))
         else:
-            page = request.args.get('page', 1, type=int)
+            page = request.args.get('page', 1 , type=int)
             users = User.query.paginate(page, app.config['PER_PAGE'], False).items
-        return jsonify(users_schema.dump(users))
+            return jsonify(users_schema.dump(users))
+
+
+        
     
     
 
