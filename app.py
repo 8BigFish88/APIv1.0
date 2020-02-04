@@ -24,7 +24,7 @@ db = SQLAlchemy(app)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    email = db.Column(db.String, nullable=True)
+    email = db.Column(db.String, nullable=False, unique=True)
     avatar = db.Column(db.String, nullable=True, default='https://shmector.com/_ph/4/184260380.png')
     description = db.Column(db.String, nullable=True)
 
@@ -34,8 +34,8 @@ class UserSchema(ModelSchema):
         sqla_session = db.session
 
 userModel = users.model('userModel', {
-    'name' : fields.String(),
-    'email' : fields.String(),
+    'name' : fields.String(required=True),
+    'email' : fields.String(required=True),
     'description': fields.String(),
     'avatar' : fields.String()
 })
@@ -52,21 +52,21 @@ parserPage = reqparse.RequestParser()
 parserPage.add_argument('page',type=int, default=1)
 
 resp = {200: 'Success', 400: 'User already in db', 406: 'Content not allowed', \
-    413: 'Payload too large', 500: 'Server Error'}
+    413: 'Payload too large', 500: 'Server Error', 404: 'User Not Found' }
 
 @users.route('/<int:user_id>')
 class GET_User(Resource):
     def get(self,user_id):
         user = User.query.get_or_404(user_id)
         if not user:
-            abort(404)
+            return 'User Not Found', 404
         return jsonify(user_schema.dump(user))
     
-    @users.expect(userModel)
+    @users.expect(userModel, validate=True)
     def put(self,user_id):
         user = User.query.get_or_404(user_id)
         if not user:
-            abort(404)
+            return 'User Not Found', 404
         print(request.get_json())
         if request.is_json:
             user.name = request.get_json()['name'] if request.get_json()['name'] else user.name
@@ -84,7 +84,7 @@ class GET_User(Resource):
     def delete(self,user_id):
         user = User.query.get_or_404(user_id)
         if not user:
-            abort(404)
+            return 'User Not Found', 404
         db.session.delete(user)
         db.session.commit()
         return jsonify({'result': True})
@@ -120,24 +120,26 @@ class POST_User(Resource):
 
     @users.expect(parserId, parserPage)
     def get(self):
-        if request.args.get('user_id'):
-            user_id=request.args.get('user_id')
-            user = User.query.get_or_404(user_id)
-            if not user:
-                abort(404)
-            return jsonify(user_schema.dump(user))
-        else:
-            page = request.args.get('page', 1 , type=int)
-            users_count = User.query.count()
-            pages= users_count // app.config['PER_PAGE'] + (users_count % app.config['PER_PAGE'] > 0)
-            users = User.query.paginate(page, app.config['PER_PAGE'], False).items
-            response =    { "page": page, "per_page": app.config['PER_PAGE'],
-                "total": users_count, "total_pages": pages, "data": []}
-            response["data"]=users_schema.dump(users)
-            return jsonify(response)
+        try:
+            if request.args.get('user_id'):
+                user_id=request.args.get('user_id')
+                user = User.query.get_or_404(user_id)
+                return jsonify(user_schema.dump(user))
+            else:
+                page = request.args.get('page', 1 , type=int)
+                users_count = User.query.count()
+                pages= users_count // app.config['PER_PAGE'] + (users_count % app.config['PER_PAGE'] > 0)
+                users = User.query.paginate(page, app.config['PER_PAGE'], False).items
+                response =    { "page": page, "per_page": app.config['PER_PAGE'],
+                    "total": users_count, "total_pages": pages, "data": []}
+                response["data"]=users_schema.dump(users)
+                return jsonify(response)
+        except:
+                return 'User Not Found', 404
 
 
-        
+def create_app():
+    return app     
     
     
 
