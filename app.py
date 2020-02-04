@@ -51,6 +51,9 @@ parserId.add_argument('user_id',type=int)
 parserPage = reqparse.RequestParser()
 parserPage.add_argument('page',type=int, default=1)
 
+resp = {200: 'Success', 400: 'User already in db', 406: 'Content not allowed', \
+    413: 'Payload too large', 500: 'Server Error'}
+
 @users.route('/<int:user_id>')
 class GET_User(Resource):
     def get(self,user_id):
@@ -90,6 +93,7 @@ class GET_User(Resource):
 @users.route('/')
 class POST_User(Resource):
     @users.expect(userModel, validate=True)
+    @users.doc(responses=resp)
     def post(self):
         try:
             if request.is_json:
