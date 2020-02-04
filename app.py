@@ -89,27 +89,30 @@ class GET_User(Resource):
 
 @users.route('/')
 class POST_User(Resource):
-    @users.expect(userModel)
+    @users.expect(userModel, validate=True)
     def post(self):
-        if request.is_json:
-            user_name = request.get_json()['name'] 
-            user_description = request.get_json()['description']
-            user_avatar =  request.get_json()['avatar'] 
-            user_email =  request.get_json()['email']
-            new_user = User(
-            name=user_name,
-            email=user_email,
-            avatar=user_avatar,
-            description=user_description)
-        else:
-            new_user = User(
-            name=request.args.get('name'),
-            email=request.args.get('email'),
-            avatar=request.args.get('avatar'),
-            description=request.args.get('description'))
-        db.session.add(new_user)
-        db.session.commit()
-        return jsonify(user_schema.dump(new_user))
+        try:
+            if request.is_json:
+                user_name = request.get_json()['name'] 
+                user_description = request.get_json()['description']
+                user_avatar =  request.get_json()['avatar'] 
+                user_email =  request.get_json()['email']
+                new_user = User(
+                name=user_name,
+                email=user_email,
+                avatar=user_avatar,
+                description=user_description)
+            else:
+                new_user = User(
+                name=request.args.get('name'),
+                email=request.args.get('email'),
+                avatar=request.args.get('avatar'),
+                description=request.args.get('description'))
+            db.session.add(new_user)
+            db.session.commit()
+            return jsonify(user_schema.dump(new_user))
+        except:
+            return 'Error Server Side', 500
 
     @users.expect(parserId, parserPage)
     def get(self):
