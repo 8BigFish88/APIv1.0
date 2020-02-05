@@ -1,15 +1,15 @@
-#install libraries
+# Install libraries
 
 pip install -r requirements.txt
 
-# running the app
+# Running the app
 
 python app.py
 
-#running the tests
+# Running the tests
 
 pytest .
 
-#running test with coverage
+# Running test with coverage
 
 pytest . -v  --cov-report html --cov=app test/ 
