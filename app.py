@@ -58,60 +58,47 @@ resp = {200: 'Success', 400: 'User already in db', 406: 'Content not allowed', \
 class GET_User(Resource):
     def get(self,user_id):
         user = User.query.get_or_404(user_id)
-        if not user:
-            return 'User Not Found', 404
+        #if not user:
+        #   return 'User Not Found', 404
         return jsonify(user_schema.dump(user))
     
     @users.expect(userModel, validate=True)
     def put(self,user_id):
         user = User.query.get_or_404(user_id)
-        if not user:
-            return 'User Not Found', 404
+        #if not user:
+        #   return 'User Not Found', 404
         print(request.get_json())
-        if request.is_json:
-            user.name = request.get_json()['name'] if request.get_json()['name'] else user.name
-            user.description = request.get_json()['description'] if request.get_json()['description'] else user.description
-            user.avatar =  request.get_json()['avatar'] if request.get_json()['avatar'] else user.avatar
-            user.email =  request.get_json()['email'] if request.get_json()['email'] else user.email
-        else:
-            user.name = request.args.get('name') if request.args.get('name') else user.name
-            user.description = request.args.get('description') if request.args.get('description') else user.description
-            user.avatar =  request.args.get('avatar') if request.args.get('avatar') else user.avatar
-            user.email =  request.args.get('email') if request.args.get('email') else user.email
+        user.name = request.get_json()['name'] if request.get_json()['name'] else user.name
+        user.description = request.get_json()['description'] if request.get_json()['description'] else user.description
+        user.avatar =  request.get_json()['avatar'] if request.get_json()['avatar'] else user.avatar
+        user.email =  request.get_json()['email'] if request.get_json()['email'] else user.email
         db.session.commit()
         return jsonify(user_schema.dump(user))
 
     def delete(self,user_id):
         user = User.query.get_or_404(user_id)
-        if not user:
-            return 'User Not Found', 404
+        #if not user:
+        #   return 'User Not Found', 404
         db.session.delete(user)
         db.session.commit()
         return jsonify({'result': True})
 
 
-@users.route('/')
+@users.route('')
 class POST_User(Resource):
     @users.expect(userModel, validate=True)
     @users.doc(responses=resp)
     def post(self):
         try:
-            if request.is_json:
-                user_name = request.get_json()['name'] 
-                user_description = request.get_json()['description']
-                user_avatar =  request.get_json()['avatar'] 
-                user_email =  request.get_json()['email']
-                new_user = User(
-                name=user_name,
-                email=user_email,
-                avatar=user_avatar,
-                description=user_description)
-            else:
-                new_user = User(
-                name=request.args.get('name'),
-                email=request.args.get('email'),
-                avatar=request.args.get('avatar'),
-                description=request.args.get('description'))
+            user_name = request.get_json()['name'] 
+            user_description = request.get_json()['description']
+            user_avatar =  request.get_json()['avatar'] 
+            user_email =  request.get_json()['email']
+            new_user = User(
+            name=user_name,
+            email=user_email,
+            avatar=user_avatar,
+            description=user_description)
             db.session.add(new_user)
             db.session.commit()
             return jsonify(user_schema.dump(new_user))
