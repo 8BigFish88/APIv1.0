@@ -34,10 +34,10 @@ class UserSchema(ModelSchema):
         sqla_session = db.session
 
 userModel = users.model('userModel', {
-    'name' : fields.String(required=True),
-    'email' : fields.String(required=True),
-    'description': fields.String(),
-    'avatar' : fields.String()
+    'name' : fields.String(required=True, validate=True),
+    'email' : fields.String(required=True, validate=True),
+    'description': fields.String(validate=True),
+    'avatar' : fields.String(validate=True)
 })
 
 user_schema = UserSchema()
@@ -76,9 +76,9 @@ class GET_User(Resource):
         return jsonify(user_schema.dump(user))
 
     def delete(self,user_id):
-        user = User.query.get_or_404(user_id)
-        #if not user:
-        #   return 'User Not Found', 404
+        user = User.query.get(user_id)
+        if not user:
+            return 'User Not Found', 404
         db.session.delete(user)
         db.session.commit()
         return jsonify({'result': True})
@@ -107,28 +107,24 @@ class POST_User(Resource):
 
     @users.expect(parserId, parserPage)
     def get(self):
-        try:
-            if request.args.get('user_id'):
-                user_id=request.args.get('user_id')
-                user = User.query.get_or_404(user_id)
-                return jsonify(user_schema.dump(user))
-            else:
-                page = request.args.get('page', 1 , type=int)
-                users_count = User.query.count()
-                pages= users_count // app.config['PER_PAGE'] + (users_count % app.config['PER_PAGE'] > 0)
-                users = User.query.paginate(page, app.config['PER_PAGE'], False).items
-                response =    { "page": page, "per_page": app.config['PER_PAGE'],
-                    "total": users_count, "total_pages": pages, "data": []}
-                response["data"]=users_schema.dump(users)
-                return jsonify(response)
-        except:
+        if request.args.get('user_id'):
+            user_id=request.args.get('user_id')
+            user = User.query.get(user_id)
+            if not user:
                 return 'User Not Found', 404
-
+            return jsonify(user_schema.dump(user))
+        else:
+            page = request.args.get('page', 1 , type=int)
+            users_count = User.query.count()
+            pages= users_count // app.config['PER_PAGE'] + (users_count % app.config['PER_PAGE'] > 0)
+            users = User.query.paginate(page, app.config['PER_PAGE'], False).items
+            response =   { "page": page, "per_page": app.config['PER_PAGE'],
+                    "total": users_count, "total_pages": pages, "data": []}
+            response["data"]=users_schema.dump(users)
+            return jsonify(response)
 
 def create_app():
     return app     
-    
-    
 
 
 if __name__ == '__main__':

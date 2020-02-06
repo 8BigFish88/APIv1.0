@@ -1,5 +1,8 @@
-from flask import json
+from flask import json, jsonify
 from random import randrange
+from app import User, ModelSchema, user_schema, users_schema
+
+n = randrange(0,100)
 
 def test_home(client):
     r=client.get('/')
@@ -10,11 +13,13 @@ def test_get(client):
     r.status == '200'
 
 def test_get1(client):
-    r=client.get('/api/v1.0/users/1')
-    r.status == '200'
+    user = User.query.get(4)
+    r=client.get('/api/v1.0/users/4',data=json.dumps(user_schema.dump(user)), content_type='application/json')
+    data = json.loads(r.get_data(as_text=True))
+    assert r.status_code == 200
+    assert data['name'] == 'tizia'
 
 def test_post(client):
-    n = randrange(0,100)
     n_string = str(n)
     name = 'tzaza'
     j = {
@@ -25,6 +30,8 @@ def test_post(client):
     }
     r=client.post('/api/v1.0/users', data=json.dumps(j), content_type='application/json')
     assert r.status_code == 200
+    global user_id 
+    user_id = str(r.json['id'])
     assert r.json['id'] is not None
     assert type(r.json['id']) is int
     assert r.json['email'] is not None
@@ -43,14 +50,28 @@ def test_put(client):
     assert r.status_code == 200
 
 def test_get2(client):
-    r=client.get('/api/v1.0/users/?user_id=4')
-    r.status == '200'
+    user = User.query.get(4)
+    r=client.get('/api/v1.0/users?user_id=4',data=json.dumps(user_schema.dump(user)), content_type='application/json')
+    data = json.loads(r.get_data(as_text=True))
+    assert r.status_code == 200
+    assert data['name'] == 'tizia'
 
-def test_get7(client):
-    r=client.get('/api/v1.0/users/?user_id=1')
-    r.status == '404'
+def test_get_not_found(client):
+    r=client.get('/api/v1.0/users/1')
+    assert r.status_code == 404
+
+def test_get_not_found_par(client):
+    r=client.get('/api/v1.0/users?user_id=1')
+    data = json.loads(r.get_data(as_text=True))
+    assert data == 'User Not Found'
+    
 
 
 def test_delete(client):
-    r=client.delete('/api/v1.0/users/?user_id=30')
-    r.status == '200'
+    #user = User.query.filter_by(email= str(n)+'cailzaza@mail.com').first()
+    r=client.delete('/api/v1.0/users/'+ user_id)
+    assert r.status_code == 200
+    r=client.delete('/api/v1.0/users/'+ user_id)
+    data = json.loads(r.get_data(as_text=True))
+    assert data == 'User Not Found'
+    
