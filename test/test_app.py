@@ -9,7 +9,7 @@ def test_home(client):
     r.status == '200'
 
 def test_get(client):
-    r=client.get('/api/v1.0/users')
+    r=client.get('https://api8bigfiish88.herokuapp.com/api/v1.0/users?page=1')
     r.status == '200'
 
 def test_get1(client):
