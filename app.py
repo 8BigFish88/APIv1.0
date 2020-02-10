@@ -16,7 +16,7 @@ api = Api(app, version='1.0', title='Sample Users Insert API',
 
 users = api.namespace('api/v1.0/users',description='CRUD operation for users')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db' 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://qjamdtwgrbyppe:02ffd5e72a3b9f6983c048fd6f3d0fdf0457a91f580eb72ce5c807cd40a5fa21@ec2-54-247-125-38.eu-west-1.compute.amazonaws.com:5432/d2qjilevj3ug76' 
 app.config['PER_PAGE'] = 6
 
 db = SQLAlchemy(app)
@@ -76,12 +76,15 @@ class GET_User(Resource):
         return jsonify(user_schema.dump(user))
 
     def delete(self,user_id):
-        user = User.query.get(user_id)
-        if not user:
-            return 'User Not Found', 404
-        db.session.delete(user)
-        db.session.commit()
-        return jsonify({'result': True})
+        try:
+            user = User.query.get(user_id)
+            if not user:
+             return 'User Not Found', 404
+            db.session.delete(user)
+            db.session.commit()
+            return jsonify({'result': True})
+        except:
+            return 'Error Server Side', 500
 
 
 @users.route('')

@@ -74,4 +74,5 @@ def test_delete(client):
     r=client.delete('/api/v1.0/users/'+ user_id)
     data = json.loads(r.get_data(as_text=True))
     assert data == 'User Not Found'
+    assert r.status_code == 404
     
