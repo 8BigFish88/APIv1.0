@@ -13,8 +13,8 @@ def test_get(client):
     r.status == '200'
 
 def test_get1(client):
-    user = User.query.get(4)
-    r=client.get('/api/v1.0/users/4',data=json.dumps(user_schema.dump(user)), content_type='application/json')
+    user = User.query.get(3)
+    r=client.get('/api/v1.0/users/3',data=json.dumps(user_schema.dump(user)), content_type='application/json')
     data = json.loads(r.get_data(as_text=True))
     assert r.status_code == 200
     assert data['name'] == 'tizia'
@@ -46,12 +46,12 @@ def test_put(client):
         'description': 'prova',
         'avatar': 'https://images.unsplash.com/photo-1558981359-219d6364c9c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
     }
-    r=client.put('/api/v1.0/users/4', data=json.dumps(j), content_type='application/json')
+    r=client.put('/api/v1.0/users/3', data=json.dumps(j), content_type='application/json')
     assert r.status_code == 200
 
 def test_get2(client):
     user = User.query.get(4)
-    r=client.get('/api/v1.0/users?user_id=4',data=json.dumps(user_schema.dump(user)), content_type='application/json')
+    r=client.get('/api/v1.0/users?user_id=3',data=json.dumps(user_schema.dump(user)), content_type='application/json')
     data = json.loads(r.get_data(as_text=True))
     assert r.status_code == 200
     assert data['name'] == 'tizia'
